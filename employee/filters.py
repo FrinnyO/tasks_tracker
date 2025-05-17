@@ -19,10 +19,10 @@ class EmployeeFilter(django_filters.FilterSet):
 
     def filter_can_take_task(self, queryset, name, value):
         min_tracker_count = queryset.annotate(
-            tracker_count=Count("trackers")
+            tracker_count=Count("tasks")
         ).aggregate(Min("tracker_count"))["tracker_count__min"]
         possible_employees = queryset.filter(tracker_count__lte=min_tracker_count + 2)
         parent_tasks_employees = queryset.filter(
-            trackers__related_tracker__isnull=False
+            tasks__related_task__isnull=False
         )
         return queryset.filter(pk__in=parent_tasks_employees | possible_employees)

@@ -66,7 +66,6 @@
     [http://localhost:8000/employee/?count_gte=2](http://localhost:8000/employee/?count_gte=2)
 3. Фильтрация сотрудников которые менее нагружены(имеют максимум на 2 задачи больше от самого разгруженного) или
     выполняет связанную задачу.
-
     [http://localhost:8000/employee/?can_take_task=True](http://localhost:8000/employee/??can_take_task=True)
 
 Модели Tracker:
